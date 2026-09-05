@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-ink text-parchment font-sans antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid #b08d4f;
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Certificate unsealing reveal — the one deliberate motion moment */
+@keyframes unseal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.unseal-reveal {
+  animation: unseal 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Double-rule diploma border */
+.diploma-border {
+  border: 3px solid #b08d4f;
+  outline: 1px solid #b08d4f;
+  outline-offset: 6px;
+}

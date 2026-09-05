@@ -1,0 +1,13 @@
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_CONTRACT_ADDRESS: string;
+  readonly VITE_CHAIN_ID: string;
+  readonly VITE_PINATA_JWT: string;
+  readonly VITE_PINATA_GATEWAY: string;
+  readonly VITE_PUBLIC_RPC_URL: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
