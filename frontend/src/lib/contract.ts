@@ -1,7 +1,7 @@
-import { Contract, JsonRpcSigner, BrowserProvider } from "ethers";
+import { Contract, ContractRunner } from "ethers";
 import { CONTRACT_ADDRESS, CONTRACT_ABI } from "../config/contract";
 
-export function getContract(signerOrProvider: JsonRpcSigner | BrowserProvider) {
+export function getContract(signerOrProvider: ContractRunner) {
   if (!CONTRACT_ADDRESS) {
     throw new Error(
       "Contract address is not configured. Set VITE_CONTRACT_ADDRESS in frontend/.env."
@@ -20,7 +20,7 @@ export type CredentialInfo = {
 
 /** Read-only lookup usable without a connected wallet (uses a public RPC provider). */
 export async function readCredential(
-  provider: BrowserProvider | any,
+  provider: ContractRunner,
   tokenId: number
 ): Promise<CredentialInfo> {
   const contract = getContract(provider);
